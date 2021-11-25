@@ -1,0 +1,8 @@
+{
+  "name": "ei-tapable",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:elvisii/ei-tapable.git",
+  "author": "liuxiaolong <victory.xiaolong@outlook.com>",
+  "license": "MIT"
+}
