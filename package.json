@@ -4,5 +4,17 @@
   "main": "index.js",
   "repository": "git@github.com:elvisii/ei-tapable.git",
   "author": "liuxiaolong <victory.xiaolong@outlook.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^27.3.1"
+  },
+  "scripts": {
+    "test": "jest",
+    "travis": "yarn jest --coverage"
+  },
+  "jest": {
+    "transform": {
+      "__test__[\\\\/].+\\.js$": "babel-jest"
+    }
+  }
 }
