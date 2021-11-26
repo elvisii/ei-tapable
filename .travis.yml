@@ -5,8 +5,8 @@ node_js:
   - "10"
 deploy:
   provider: npm
-  email: "victory.xiaolong@outlook.com"
-  api_key: "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"
+  email: "$NPM_EMAIL_ADDRESS"
+  api_key: "$NPM_API_TOKEN"
   on:
     tags: true
 script: yarn run travis
