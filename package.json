@@ -10,7 +10,6 @@
   "license": "MIT",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
-    "tag": "alpha",
     "access": "public"
   },
   "devDependencies": {

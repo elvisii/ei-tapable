@@ -3,10 +3,8 @@ language: node_js
 node_js:
   - "12"
   - "10"
-deploy:
-  provider: npm
-  email: "$NPM_EMAIL_ADDRESS"
-  api_key: "$NPM_API_TOKEN"
-  on:
-    tags: true
+# deploy:
+#   provider: npm
+#   on:
+#     tags: true
 script: yarn run travis
