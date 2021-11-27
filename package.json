@@ -2,6 +2,12 @@
   "name": "ei-tapable",
   "version": "1.0.5",
   "main": "lib/index.js",
+  "keywords": [
+    "pub/sub",
+    "tool",
+    "web",
+    "events"
+  ],
   "repository": {
     "type": "git",
     "url": "git@github.com:elvisii/ei-tapable.git"
