@@ -9,14 +9,55 @@ describe('SyncHook', () => {
     expect(mock0).toHaveBeenCalled();
 
     const h1 = new SyncHook(['test']);
-    const h2 = new SyncHook(['test', 'arg1'])
+    const h2 = new SyncHook(['test', 'arg1']);
+    const h3 = new SyncHook(['tsst', 'arg1', 'arg2']);
+
     const mock1 = jest.fn();
     const mock2 = jest.fn();
+    const mock3 = jest.fn();
+
     h1.tap('B', mock1);
     h2.tap('C', mock2);
+    h3.tap('D', mock3);
     h1.call('1');
-    h2.call('1', 2)
+    h2.call('1', 2);
+    h3.call('1', 2, 3);
+
     expect(mock1).toHaveBeenLastCalledWith('1');
-    expect(mock2).toHaveBeenLastCalledWith('1', 2)
+    expect(mock2).toHaveBeenLastCalledWith('1', 2);
+    expect(mock3).toHaveBeenLastCalledWith('1', 2, 3);
+  });
+  it('should allow to intercept calls', () => {
+    const h0 = new SyncHook(['arg1', 'arg2']);
+
+    const mock0 = jest.fn();
+    const mockCall = jest.fn();
+    const mockRegister = jest.fn((x) => {
+      return {
+        type: 'sync',
+        name: 'ei',
+        cb: mock0,
+      };
+    });
+
+    const mock1 = jest.fn();
+    h0.tap('Test1', mock1);
+
+    h0.intercept({
+      call: mockCall,
+      register: mockRegister,
+    });
+
+    const mock2 = jest.fn();
+    h0.tap('Test2', mock2);
+    
+    h0.call(1, 2);
+
+    expect(mockCall).toHaveBeenLastCalledWith(1, 2);
+    expect(mockRegister).toHaveBeenLastCalledWith({
+      name: 'Test2',
+      type: 'sync',
+      cb: mock2,
+    });
   });
 });

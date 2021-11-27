@@ -1,5 +1,7 @@
 node_modules
 coverage/
 
+.vscode
+
 yarn-error.log
 npm-debug.log
