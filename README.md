@@ -54,6 +54,8 @@ foo.hooks.tests.call('foo');
 
 * __Sync__. A sync hook can only be tapped with synchronous functions (using `myhook.tap()`)
 
+* __Waterfall__. A waterfall hook also calls each tapped function in a row. Unlike the basic hook, it passes a return value from each function to the next function.
+
 ### Interceptor
 
 hook offer an additional interceptor API:
