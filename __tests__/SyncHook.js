@@ -27,6 +27,20 @@ describe('SyncHook', () => {
     expect(mock2).toHaveBeenLastCalledWith('1', 2);
     expect(mock3).toHaveBeenLastCalledWith('1', 2, 3);
   });
+  it('should sync execute hooks', () => {
+    const hook = new SyncHook(['arg1']);
+
+    const mockFn1 = jest.fn(() => 'A');
+    hook.tap('A', mockFn1);
+
+    const mockFn2 = jest.fn(() => 'B');
+    hook.tap('B', mockFn2);
+
+    hook.call('1');
+
+    expect(mockFn1).toHaveBeenCalledTimes(1);
+    expect(mockFn2).toHaveBeenCalledTimes(1);
+  });
   it('should allow to intercept calls', () => {
     const h0 = new SyncHook(['arg1', 'arg2']);
 
@@ -50,7 +64,7 @@ describe('SyncHook', () => {
 
     const mock2 = jest.fn();
     h0.tap('Test2', mock2);
-    
+
     h0.call(1, 2);
 
     expect(mockCall).toHaveBeenLastCalledWith(1, 2);
